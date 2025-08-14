@@ -1,14 +1,15 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import customFetch from "../utils/custom";
-import { toast } from "react-toastify";
+import { useGlobalContext } from "../context/context";
 
 const Gallery = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["images"],
+  const { searchTerm } = useGlobalContext();
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: ["images", searchTerm],
     queryFn: async () => {
       const { data } = await customFetch.get(
-        "/?client_id=qSy-m1aN21b8mhwk1PvoyLHxH8CJRd6pS_20FeYN7Wo&query=office"
+        `/?client_id=${import.meta.env.VITE_API_KEY}=${searchTerm}`
       );
       return data;
     },
@@ -22,8 +23,12 @@ const Gallery = () => {
     );
   }
 
-  if (error) {
-    return toast.error(error.message);
+  if (isError) {
+    return (
+      <div className="image-container">
+        <p style={{ color: "red" }}>An error occurred: {error.message}</p>
+      </div>
+    );
   }
 
   return (
