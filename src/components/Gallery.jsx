@@ -9,7 +9,7 @@ const Gallery = () => {
     queryKey: ["images", searchTerm],
     queryFn: async () => {
       const { data } = await customFetch.get(
-        `/?client_id=${import.meta.env.VITE_API_KEY}=${searchTerm}`
+        `/?client_id=${import.meta.env.VITE_API_KEY}&query=${searchTerm}`
       );
       return data;
     },
