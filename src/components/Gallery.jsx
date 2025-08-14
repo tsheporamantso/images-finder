@@ -37,7 +37,11 @@ const Gallery = () => {
         ({ id, urls: { regular }, alt_description }) => {
           return (
             <div key={id}>
-              <img className="img" src={regular} alt={alt_description} />
+              <img
+                className="img"
+                src={regular}
+                alt={alt_description || "Gallery image"}
+              />
             </div>
           );
         }
