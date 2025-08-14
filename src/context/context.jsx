@@ -9,7 +9,11 @@ export const AppProvider = ({ children }) => {
     const newDarkTheme = !isDarkTheme;
     setIsDarkTheme(newDarkTheme);
 
-    document.body.classList.toggle("dark-theme");
+    if (newDarkTheme) {
+      document.body.classList.add("dark-theme");
+    } else {
+      document.body.classList.remove("dark-theme");
+    }
   };
 
   return (
