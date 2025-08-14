@@ -33,13 +33,15 @@ const Gallery = () => {
 
   return (
     <section className="image-container">
-      {data.results.map(({ id, urls: { regular }, alt_description }) => {
-        return (
-          <div key={id}>
-            <img className="img" src={regular} alt={alt_description} />
-          </div>
-        );
-      })}
+      {(data?.results || []).map(
+        ({ id, urls: { regular }, alt_description }) => {
+          return (
+            <div key={id}>
+              <img className="img" src={regular} alt={alt_description} />
+            </div>
+          );
+        }
+      )}
     </section>
   );
 };
