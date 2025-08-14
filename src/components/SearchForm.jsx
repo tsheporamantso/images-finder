@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "../context/context";
 
 const SearchForm = () => {
+  const { setSearchTerm } = useGlobalContext();
   const [searchValue, setSearchValue] = useState("");
 
   const handleSubmit = (e) => {
@@ -10,6 +12,8 @@ const SearchForm = () => {
       toast.error("Cannot submit empty field!");
       return;
     }
+    setSearchTerm(searchValue);
+    setSearchValue("");
   };
 
   return (
