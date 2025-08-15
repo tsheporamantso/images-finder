@@ -2,12 +2,14 @@ import { useState, useEffect } from "react";
 import { AppContext } from "./AppContext";
 
 const getInitialDarkMode = () => {
+  const storedDarkMode = localStorage.getItem("darkTheme");
+  if (storedDarkMode !== null) {
+    return storedDarkMode === "true";
+  }
   const prefersDarkTheme = window.matchMedia(
     "(prefers-color-scheme:dark)"
   ).matches;
-  const storedDarkMode = localStorage.getItem("darkTheme") === "false";
-
-  return storedDarkMode || prefersDarkTheme;
+  return prefersDarkTheme;
 };
 
 export const AppProvider = ({ children }) => {
