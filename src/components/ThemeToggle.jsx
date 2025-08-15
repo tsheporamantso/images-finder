@@ -1,7 +1,7 @@
 import React from "react";
 import { GoSun } from "react-icons/go";
 import { FaMoon } from "react-icons/fa";
-import { useGlobalContext } from "../context/context";
+import { useGlobalContext } from "../context/useGlobalContext";
 
 const ThemeToggle = () => {
   const { toggleDarkTheme, isDarkTheme } = useGlobalContext();
