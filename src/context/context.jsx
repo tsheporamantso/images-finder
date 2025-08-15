@@ -1,7 +1,5 @@
-import { createContext, useContext, useState } from "react";
-
-export const AppContext = createContext();
-
+import { useState } from "react";
+import { AppContext } from "./AppContext";
 export const AppProvider = ({ children }) => {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [searchTerm, setSearchTerm] = useState("flowers");
@@ -25,5 +23,3 @@ export const AppProvider = ({ children }) => {
     </AppContext.Provider>
   );
 };
-
-export const useGlobalContext = () => useContext(AppContext);
