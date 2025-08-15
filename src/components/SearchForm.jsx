@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useGlobalContext } from "../context/context";
+import { useGlobalContext } from "../context/useGlobalContext";
 
 const SearchForm = () => {
   const { setSearchTerm } = useGlobalContext();

@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import customFetch from "../utils/custom";
-import { useGlobalContext } from "../context/context";
+import { useGlobalContext } from "../context/useGlobalContext";
 
 const Gallery = () => {
   const { searchTerm } = useGlobalContext();
